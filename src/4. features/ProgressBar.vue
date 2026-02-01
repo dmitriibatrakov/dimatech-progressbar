@@ -84,7 +84,7 @@ const rotateAngle = computed(() => {
       />
     </svg>
     <div v-if="progressbarState === 'inProgress'">
-      <div v-if="progress < 100" class="progress-text" :style="{ color: currentColor }">
+      <div v-if="progress < 100" class="progress-text" >
         {{ Math.round(progress) }}%
       </div>
       <div v-else class="progress-icon">
@@ -106,6 +106,7 @@ const rotateAngle = computed(() => {
 
 .progress-icon,
 .progress-text {
+  color: #999a9e;
   position: absolute;
   top: 50%;
   left: 50%;
@@ -113,6 +114,6 @@ const rotateAngle = computed(() => {
   font-size: 1.5rem;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
+  font-weight: 400;
 }
 </style>
