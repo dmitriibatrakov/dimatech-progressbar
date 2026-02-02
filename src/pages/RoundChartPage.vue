@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { router } from '@/app/router';
 import ChartLegendSection from '@/components/pieChart/ChartLegendSection.vue';
+import EditIconsPack from '@/components/pieChart/icons/EditIconsPack.vue';
 import RoundChartSection from '@/components/pieChart/RoundChartSection.vue';
 import DMTechBtn from '@/components/ui/btn/DMTechBtn.vue';
 </script>
 
 <template>
+  <EditIconsPack />
   <div class="component-align">
     <h2>Кргуовая диаграма</h2>
     <section class="chart-container">

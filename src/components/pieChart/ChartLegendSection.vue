@@ -1,10 +1,10 @@
 <script setup lang="ts">
 import DMTechBtn from '../ui/btn/DMTechBtn.vue';
-import DMTechIcon from '@/assets/icons/DMTechIcon.vue';
 import type { ChartDataType } from '@/types/types';
 import { useChartDataStore } from '@/stores/chartData.store';
 import { computed, ref } from 'vue';
 import { SketchPicker } from 'vue-color';
+import DTEditSprite from './icons/DTEditSprite.vue';
 
 const isOpen = ref<boolean>(false);
 const isNewItem = ref<boolean>(false);
@@ -64,8 +64,8 @@ function deleteSector(id: number) {
         <div><div class="row-color" :style="{ backgroundColor: row.color }"></div></div>
       </div>
       <div class="row-btns">
-        <DMTechIcon name="edit" size="1.2rem" @click="showModal(row)" role="button" />
-        <DMTechIcon name="delete" size="1.2rem" @click="deleteSector(row.id)" role="button" />
+        <DTEditSprite name="edit" size="1.2rem" @click="showModal(row)" role="button" />
+        <DTEditSprite name="delete" size="1.2rem" @click="deleteSector(row.id)" role="button" />
       </div>
     </div>
     <DMTechBtn @click="showModal(chartDataStore.newData)">Добавить сектор</DMTechBtn>

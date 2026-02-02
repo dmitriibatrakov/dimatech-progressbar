@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { router } from '@/app/router';
 import DashboardBarSection from '@/components/progressBar/DashboardBarSection.vue';
+import ProgressIconsPack from '@/components/progressBar/Icons/ProgressIconsPack.vue';
 import RoundBarSection from '@/components/progressBar/RoundBarSection.vue';
 import DMTechBtn from '@/components/ui/btn/DMTechBtn.vue';
 import { ref } from 'vue';
@@ -28,6 +29,7 @@ const dashboardParams = ref([
 </script>
 
 <template>
+  <ProgressIconsPack />
   <div class="component-align">
     <h2>Компонент прогресс бара</h2>
     <RoundBarSection />

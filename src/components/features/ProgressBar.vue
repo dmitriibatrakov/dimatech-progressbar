@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import DMTechIcon from '@/assets/icons/DMTechIcon.vue';
 import type { ProgressbarStateType, ProgressBarType } from '@/types/types';
 import { computed, ref } from 'vue';
+import DTProgressSprite from '../progressBar/Icons/DTProgressSprite.vue';
 
 const {
   progress,
@@ -88,11 +88,11 @@ const rotateAngle = computed(() => {
         {{ Math.round(progress) }}%
       </div>
       <div v-else class="progress-icon">
-        <DMTechIcon name="success" :color="currentColor" />
+        <DTProgressSprite name="success" :color="currentColor" />
       </div>
     </div>
     <div class="progress-icon">
-      <DMTechIcon :name="progressbarState" :color="currentColor" />
+      <DTProgressSprite :name="progressbarState" :color="currentColor" />
     </div>
   </div>
 </template>

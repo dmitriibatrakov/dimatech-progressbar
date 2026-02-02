@@ -7,7 +7,6 @@ interface States {
 }
 
 const props = defineProps<{ states: States; roundCoeff: number }>();
-console.log();
 </script>
 
 <template>

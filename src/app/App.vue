@@ -1,10 +1,8 @@
 <script setup lang="ts">
-import IconsPack from '@/assets/icons/IconsPack.vue';
 </script>
 
 <template>
   <div class="page-container">
-    <IconsPack />
     <Transition>
       <RouterView />
     </Transition>
