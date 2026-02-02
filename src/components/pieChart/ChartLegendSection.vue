@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import DMTechBtn from '@/6. shared/btn/DMTechBtn.vue';
-import DMTechIcon from '@/6. shared/icons/DMTechIcon.vue';
-import { useChartDataStore } from '@/6. shared/stores/chartData.store';
-import type { ChartDataType } from '@/6. shared/types';
+import DMTechBtn from '../ui/btn/DMTechBtn.vue';
+import DMTechIcon from '@/assets/icons/DMTechIcon.vue';
+import type { ChartDataType } from '@/types/types';
+import { useChartDataStore } from '@/stores/chartData.store';
 import { computed, ref } from 'vue';
 import { SketchPicker } from 'vue-color';
 
@@ -39,7 +39,7 @@ function saveNewData() {
   if (isNewItem.value) {
     chartDataStore.chartData.push(chartDataStore.newData);
   } else {
-    chartDataStore.chartData.forEach((row) =>
+    chartDataStore.chartData.forEach((row: ChartDataType) =>
       row.id !== chartDataStore.newData.id ? row : chartDataStore.newData
     );
   }
@@ -47,7 +47,7 @@ function saveNewData() {
 }
 
 function deleteSector(id: number) {
-  chartDataStore.chartData = chartDataStore.chartData.filter((row) => row.id !== id);
+  chartDataStore.chartData = chartDataStore.chartData.filter((row: ChartDataType) => row.id !== id);
 }
 </script>
 

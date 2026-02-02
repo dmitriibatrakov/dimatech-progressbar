@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import ProgressBar from '@/4. features/ProgressBar.vue';
-import type { ProgressbarStateType } from '@/6. shared/types';
+import ProgressBar from '../features/ProgressBar.vue';
+import type { ProgressbarStateType } from '@/types/types';
 interface States {
   progress: number;
   progressbarState: ProgressbarStateType;

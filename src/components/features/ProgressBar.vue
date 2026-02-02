@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import DMTechIcon from '@/6. shared/icons/DMTechIcon.vue';
-import type { ProgressbarStateType, ProgressBarType } from '@/6. shared/types';
+import DMTechIcon from '@/assets/icons/DMTechIcon.vue';
+import type { ProgressbarStateType, ProgressBarType } from '@/types/types';
 import { computed, ref } from 'vue';
 
 const {
@@ -84,7 +84,7 @@ const rotateAngle = computed(() => {
       />
     </svg>
     <div v-if="progressbarState === 'inProgress'">
-      <div v-if="progress < 100" class="progress-text" >
+      <div v-if="progress < 100" class="progress-text">
         {{ Math.round(progress) }}%
       </div>
       <div v-else class="progress-icon">

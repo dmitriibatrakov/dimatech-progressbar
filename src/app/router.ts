@@ -1,6 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
-import ProgressPage from "@/2. pages/ProgressPage.vue";
-import RoundChartPage from "@/2. pages/RoundChartPage.vue";
+import ProgressPage from "@/pages/ProgressPage.vue";
+import RoundChartPage from "@/pages/RoundChartPage.vue";
 
 export const  router = createRouter({
   routes: [{

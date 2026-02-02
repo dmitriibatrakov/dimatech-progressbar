@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import IconsPack from '@/6. shared/icons/IconsPack.vue';
+import IconsPack from '@/assets/icons/IconsPack.vue';
 </script>
 
 <template>

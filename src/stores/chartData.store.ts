@@ -1,6 +1,6 @@
 import { defineStore } from 'pinia';
 import { computed, ref } from 'vue';
-import type { ChartDataType } from '../types';
+import type { ChartDataType } from '@/types/types';
 
 export const useChartDataStore = defineStore('chartData', () => {
   const chartData = ref<ChartDataType[]>([

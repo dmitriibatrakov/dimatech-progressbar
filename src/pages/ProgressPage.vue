@@ -1,8 +1,8 @@
 <script setup lang="ts">
-import { router } from '@/1. app/router';
-import DashboardBarSection from '@/3. widgets/DashboardBarSection.vue';
-import RoundBarSection from '@/3. widgets/RoundBarSection.vue';
-import DMTechBtn from '@/6. shared/btn/DMTechBtn.vue';
+import { router } from '@/app/router';
+import DashboardBarSection from '@/components/progressBar/DashboardBarSection.vue';
+import RoundBarSection from '@/components/progressBar/RoundBarSection.vue';
+import DMTechBtn from '@/components/ui/btn/DMTechBtn.vue';
 import { ref } from 'vue';
 
 const roundCoeff = ref<number>(0.7);
@@ -54,7 +54,7 @@ const dashboardParams = ref([
         />
       </div>
     </section>
-    <DMTechBtn @click="router.push('/roundchart')" >К круговой диаграмме</DMTechBtn>
+    <DMTechBtn @click="router.push('/roundchart')">К круговой диаграмме</DMTechBtn>
   </div>
 </template>
 
