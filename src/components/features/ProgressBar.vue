@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import type { ProgressbarStateType, ProgressBarType } from '@/types/types';
-import { computed, ref } from 'vue';
 import DTProgressSprite from '../progressBar/Icons/DTProgressSprite.vue';
+import { useProgressBar } from './useProgressBar';
 
 const {
   progress,
@@ -15,41 +15,11 @@ const {
   roundCoeff?: number;
 }>();
 
-const strokeWidth = ref<number>(6);
+const progressBar = useProgressBar(progress,
+  progressbarState,
+  barType,
+  roundCoeff);
 
-const dashboardMultipler = computed(() => {
-  return barType === 'round' ? 1 : roundCoeff;
-});
-
-const radius = computed(() => {
-  return 50 - strokeWidth.value;
-});
-
-const circumference = computed(() => 2 * Math.PI * radius.value * dashboardMultipler.value);
-
-const currentColor = computed(() => {
-  const colorAngle = (1 - (1 - progress / 100)) * 120;
-  if (progressbarState === 'success') {
-    return `hsl(120, 90%, 45%)`;
-  }
-  if (progressbarState === 'warning') {
-    return `hsl(50, 90%, 45%)`;
-  }
-  if (progressbarState === 'error') {
-    return `hsl(0, 90%, 45%)`;
-  }
-  return `hsl(${colorAngle}, 90%, 45%)`;
-});
-
-const strokeDashoffset = computed(() => {
-  return circumference.value - (progress / 100) * circumference.value;
-});
-const rotateAngle = computed(() => {
-  if (barType === 'round') {
-    return -90;
-  }
-  return 90 + (360 - 360 * roundCoeff) / 2;
-});
 </script>
 
 <template>
@@ -62,25 +32,25 @@ const rotateAngle = computed(() => {
       <circle
         cx="50"
         cy="50"
-        :r="radius"
+        :r="progressBar.radius.value"
         fill="none"
         stroke="#ebedf0"
-        :stroke-width="`${strokeWidth}`"
-        :stroke-dasharray="`${circumference} ${circumference / dashboardMultipler}`"
-        :transform="`rotate(${rotateAngle} 50 50)`"
+        :stroke-width="progressBar.strokeWidth.value"
+        :stroke-dasharray="`${progressBar.circumference.value} ${progressBar.circumference.value / progressBar.dashboardMultipler.value}`"
+        :transform="`rotate(${progressBar.rotateAngle.value} 50 50)`"
         stroke-linecap="round"
       />
       <circle
         cx="50"
         cy="50"
-        :r="radius"
+        :r="progressBar.radius.value"
         fill="none"
-        :stroke="currentColor"
-        :stroke-width="strokeWidth"
-        :stroke-dasharray="`${circumference} ${circumference / dashboardMultipler}`"
-        :stroke-dashoffset="strokeDashoffset"
+        :stroke="progressBar.currentColor.value"
+        :stroke-width="progressBar.strokeWidth.value"
+        :stroke-dasharray="`${progressBar.circumference.value} ${progressBar.circumference.value / progressBar.dashboardMultipler.value}`"
+        :stroke-dashoffset="progressBar.strokeDashoffset.value"
         stroke-linecap="round"
-        :transform="`rotate(${rotateAngle} 50 50)`"
+        :transform="`rotate(${progressBar.rotateAngle.value} 50 50)`"
       />
     </svg>
     <div v-if="progressbarState === 'inProgress'">
@@ -88,11 +58,11 @@ const rotateAngle = computed(() => {
         {{ Math.round(progress) }}%
       </div>
       <div v-else class="progress-icon">
-        <DTProgressSprite name="success" :color="currentColor" />
+        <DTProgressSprite name="success" :color="progressBar.currentColor.value" />
       </div>
     </div>
     <div class="progress-icon">
-      <DTProgressSprite :name="progressbarState" :color="currentColor" />
+      <DTProgressSprite :name="progressbarState" :color="progressBar.currentColor.value" />
     </div>
   </div>
 </template>
