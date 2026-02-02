@@ -2,6 +2,7 @@
 import type { ProgressbarStateType, ProgressBarType } from '@/types/types';
 import DTProgressSprite from '../progressBar/Icons/DTProgressSprite.vue';
 import { useProgressBar } from './useProgressBar';
+import { computed } from 'vue';
 
 const {
   progress,
@@ -15,10 +16,15 @@ const {
   roundCoeff?: number;
 }>();
 
-const progressBar = useProgressBar(progress,
-  progressbarState,
-  barType,
-  roundCoeff);
+const progressRef = computed(() => progress);
+const progressbarStateRef = computed(() => progressbarState);
+const barTypeRef = computed(() => barType );
+const roundCoeffRef = computed(() => roundCoeff);
+
+const progressBar = useProgressBar(progressRef,
+  progressbarStateRef,
+  barTypeRef,
+  roundCoeffRef);
 
 </script>
 
