@@ -52,27 +52,27 @@ function deleteSector(id: number) {
 </script>
 
 <template>
-  <section class="status-legend">
-    <div v-for="row in chartDataStore.chartData" :key="row.id" class="legend-row">
-      <div class="row-data">
+  <section class="chart-section__legend">
+    <div v-for="row in chartDataStore.chartData" :key="row.id" class="legend__row">
+      <div class="legend__row-data">
         <div>
           <span>{{ row.name }}</span>
         </div>
         <div>
           <span>{{ row.data }}</span>
         </div>
-        <div><div class="row-color" :style="{ backgroundColor: row.color }"></div></div>
+        <div><div class="legend__row-color" :style="{ backgroundColor: row.color }"></div></div>
       </div>
-      <div class="row-btns">
+      <div class="legend__row-btns">
         <DTEditSprite name="edit" size="1.2rem" @click="showModal(row)" role="button" />
         <DTEditSprite name="delete" size="1.2rem" @click="deleteSector(row.id)" role="button" />
       </div>
     </div>
     <DMTechBtn @click="showModal(chartDataStore.newData)">Добавить сектор</DMTechBtn>
     <div v-if="isOpen" class="modal" @click="closeModal">
-      <div class="modal-content" @click.stop>
+      <div class="modal__content" @click.stop>
         <h3>{{ headerModalText }}</h3>
-        <div class="input-block">
+        <div class="modal__content-input">
           <input
             type="text"
             id="sectorName"
@@ -81,7 +81,7 @@ function deleteSector(id: number) {
           />
           <label for="sectorName">Наименование</label>
         </div>
-        <div class="input-block">
+        <div class="modal__content-input">
           <input
             type="number"
             id="sectorData"
@@ -91,7 +91,7 @@ function deleteSector(id: number) {
           />
           <label for="sectorData">Значение</label>
         </div>
-        <div class="input-block color-picker">
+        <div class="modal__content-input color-picker">
           <SketchPicker
             v-model="chartDataStore.newData.color"
             disableAlpha
@@ -106,12 +106,12 @@ function deleteSector(id: number) {
 </template>
 
 <style scoped>
-.status-legend {
+.chart-section__legend {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
 }
-.legend-row {
+.legend__row {
   display: flex;
   align-items: center;
   background-color: #dbdfe933;
@@ -121,17 +121,17 @@ function deleteSector(id: number) {
   justify-content: space-between;
 }
 
-.row-data {
+.legend__row-data {
   display: flex;
   align-items: center;
 }
 
-.row-data div:not(:last-child) {
+.legend__row-data div:not(:last-child) {
   border-right: #dbdfe9 2px solid;
   padding-inline: 1rem;
 }
 
-.row-color {
+.legend__row-color {
   width: 1rem;
   height: 1rem;
   border-radius: 50%;
@@ -142,7 +142,7 @@ span:not(:first-child) {
   border-left: 2px solid #dbdfe9;
 }
 
-.row-btns {
+.legend__row-btns {
   display: flex;
   gap: 0.75rem;
   margin-left: 2rem;
@@ -159,7 +159,7 @@ span:not(:first-child) {
   align-items: center;
   justify-content: center;
   z-index: 10;
-  animation: fadeIn 0.2s ease;
+  animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
@@ -171,7 +171,7 @@ span:not(:first-child) {
   }
 }
 
-.modal-content {
+.modal__content {
   background-color: #ffffff;
   border-radius: 1rem;
   padding: 1rem 2rem;
@@ -181,11 +181,11 @@ span:not(:first-child) {
   gap: 0.7rem;
 }
 
-.input-block {
+.modal__content-input {
   position: relative;
 }
 
-.input-block label {
+.modal__content-input label {
   position: absolute;
   left: 1.25rem;
   top: 0.5rem;
@@ -193,18 +193,7 @@ span:not(:first-child) {
   color: #99a1b7;
 }
 
-.input-block input {
-  padding: 1.75rem 1.25rem 0.6rem;
-  border: 1px solid #dbdfe9;
-  border-radius: 1rem;
-  width: 100%;
-  cursor: pointer;
-}
-
-.color-picker {
-  padding: 0 1.2rem 1rem 0;
-}
-.input-block input {
+.modal__content-input input {
   padding: 1.75rem 1.25rem 0.6rem;
   border: 1px solid #dbdfe9;
   border-radius: 1rem;

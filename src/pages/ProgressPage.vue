@@ -30,24 +30,26 @@ const dashboardParams = ref([
 
 <template>
   <ProgressIconsPack />
-  <div class="component-align">
+  <div class="main">
     <h2>Компонент прогресс бара</h2>
     <RoundBarSection />
     <h3>Дашборд</h3>
-    <section class="section-container">
-      <div class="input-container">
-        <input
-          v-model="roundCoeff"
-          type="range"
-          id="roundCoeff"
-          name="roundCoeff"
-          min="0.6"
-          max="0.9"
-          step="0.02"
-        />
-        <label for="roundCoeff">Коэффициент круглости</label>
+    <section class="main__section">
+      <div class="section__inputs">
+        <div class="section__inputs-container">
+          <input
+            v-model="roundCoeff"
+            type="range"
+            id="roundCoeff"
+            name="roundCoeff"
+            min="0.6"
+            max="0.9"
+            step="0.02"
+          />
+          <label for="roundCoeff">Коэффициент круглости</label>
+        </div>
       </div>
-      <div class="dashboard">
+      <div class="section-dashboard">
         <DashboardBarSection
           v-for="(item, index) in dashboardParams"
           :key="index"
@@ -61,7 +63,7 @@ const dashboardParams = ref([
 </template>
 
 <style lang="css">
-.component-align {
+.main {
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -69,44 +71,49 @@ const dashboardParams = ref([
   width: 100%;
 }
 
-.section-container {
+.main__section {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-inputs-block {
+.section__inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.input-container {
+.section__inputs-container {
   display: flex;
   gap: 2.5rem;
   margin-bottom: 1rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.input-container input,
-.input-container select {
+.section__inputs-container input,
+.section__inputs-container select {
   width: 150px;
 }
 
-.dashboard {
+.section-dashboard {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
 
 @media (max-width: 700px) {
-  .dashboard {
+  .section-dashboard {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (max-width: 440px) {
-  .dashboard {
+  .section-dashboard {
     grid-template-columns: 1fr;
+  }
+  .section__inputs-container {
+    text-align: center;
   }
 }
 </style>

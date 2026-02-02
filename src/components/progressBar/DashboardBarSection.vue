@@ -10,25 +10,12 @@ const props = defineProps<{ states: States; roundCoeff: number }>();
 </script>
 
 <template>
-  <div class="bar-container">
-    <div class="visual-section">
-      <ProgressBar
-        :progress="props.states.progress"
-        :progressbarState="props.states.progressbarState"
-        barType="dashboard"
-        :roundCoeff
-      />
-    </div>
-  </div>
+  <ProgressBar
+    :progress="props.states.progress"
+    :progressbarState="props.states.progressbarState"
+    barType="dashboard"
+    :roundCoeff
+  />
 </template>
 
-<style scoped>
-.separator {
-  margin-top: 1rem;
-  display: flex;
-  gap: 1rem;
-}
-.visual-section {
-  display: flex;
-}
-</style>
+<style scoped></style>

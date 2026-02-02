@@ -9,13 +9,13 @@ const progressbarState = ref<ProgressbarStateType>('inProgress');
 
 <template>
   <h3>Круговой прогресс бар</h3>
-  <section class="section-container">
-    <div class="inputs-block">
-      <div class="input-container">
+  <section class="main__section">
+    <div class="section__inputs">
+      <div class="section__inputs-container">
         <input v-model="progress" type="range" id="progress" name="progress" min="0" max="100" />
         <label for="progress">Прогресс выполнения</label>
       </div>
-      <div class="input-container">
+      <div class="section__inputs-container">
         <select name="select" v-model="progressbarState">
           <option value="inProgress">in progress</option>
           <option value="success">success</option>

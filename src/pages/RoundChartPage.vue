@@ -8,11 +8,11 @@ import DMTechBtn from '@/components/ui/btn/DMTechBtn.vue';
 
 <template>
   <EditIconsPack />
-  <div class="component-align">
+  <div class="main">
     <h2>Кргуовая диаграма</h2>
-    <section class="chart-container">
+    <section class="main__chart-section">
       <ChartLegendSection />
-      <div class="chart">
+      <div class="chart-section--chart">
         <RoundChartSection />
       </div>
     </section>
@@ -21,22 +21,22 @@ import DMTechBtn from '@/components/ui/btn/DMTechBtn.vue';
 </template>
 
 <style lang="css" scoped>
-.chart-container {
+.main__chart-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1rem;
 }
 
-.chart {
+.chart-section--chart {
   width: 400px;
 }
 
 @media (max-width: 700px) {
-  .chart-container {
+  .main__chart-section {
     display: flex;
     flex-direction: column-reverse;
   }
-  .chart {
+  .chart-section--chart {
     width: 300px;
   }
 }
